@@ -5,21 +5,15 @@ import AfterCart from "./CartButton/AfterCart";
 import "./ProductList.css";
 function ProductList() {
   const [products, setProducts] = useState([]);
-  const [cartCount, setCartCount] = useState(0);
   
-
-  const handleCartCount = () => setCartCount(cartCount + 1);
-
   useEffect(() => {
     axios
       .get("https://fakestoreapi.com/products")
       .then((res) => {
-        setProducts(res.data);
-        setIsLoading(false);
+        setProducts(res.data);  
       })
       .catch((error) => {
-        setIsError(true);
-        setIsLoading(false);
+        console.log(error);
       });
   }, []);
 
@@ -44,8 +38,8 @@ function ProductList() {
             </h3>
 
     
-                <BeforeCart addToCart={handleCartCount} />
-                <AfterCart count={cartCount} />
+                <BeforeCart  />
+                <AfterCart />
             
             <div className="flex justify-between">
               <h5 className="text-sm text-blue-700 font-medium">

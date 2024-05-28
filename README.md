@@ -1,8 +1,24 @@
-# React + Vite
+# **Redux-Toolkit Demo**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### **1-** Create a folder is named 'redux' in src.
+### **2-** And a file 'cartSlice.js' anyname you working on it.
+```
++ import createSlice.
++ declare a variable named 'INITIAL_STATE'.
++ assign the function 'createSlice' to 'cartSlice' variable.
++ export actions and reducer.
+```
+### **3-** Also a file named 'store' in redux.
+```
++ import configureStore.
++ assign 'configureStore' function to 'store' variable and export it.
+```
+### **4-** In 'main.jsx' or 'index.jsx' file.
+```
++ import 'Provider' from react-redux.
++ import 'store'.
++ wrap 'Provider' component on 'App' component.
++ and pass 'store' thru 'Provider' component.
+```
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
