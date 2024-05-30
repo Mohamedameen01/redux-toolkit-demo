@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import BeforeCart from "./CartButton/BeforeCart";
-import AfterCart from "./CartButton/AfterCart";
-import "./ProductList.css";
+import CartButtons from "./CartButton";
+
 function ProductList() {
   const [products, setProducts] = useState([]);
-  
+
   useEffect(() => {
     axios
       .get("https://fakestoreapi.com/products")
@@ -26,26 +25,22 @@ function ProductList() {
         {products.map((item, key) => (
           <div
             key={key}
-            className="bg-white relative overflow-hidden text-slate-800 p-8 rounded-lg before:content-[''] before:bg-cyan-500 before:w-[80px] before:h-[120px] before:absolute before:top-[-100px] before:left-[-80px] before:rounded-[50%] before:transition-all before:ease-in-out before:delay-300 hover:before:top-[-50px]  hover:before:left-[-40px] "
+            className="bg-white relative overflow-hidden text-slate-800 px-5 py-5 rounded-lg before:content-[''] before:bg-cyan-500 before:w-[80px] before:h-[120px] before:absolute before:top-[-100px] before:left-[-80px] before:rounded-[50%] before:transition-all before:ease-in-out before:delay-300 hover:before:top-[-50px]  hover:before:left-[-40px] "
           >
             <img
               className="w-36 h-40 mx-auto my-4 hover:scale-75 "
               src={item.image}
               alt={item.title}
             />
-            <h3 className="h-20 text-md font-semibold tracking-wide my-3 text-center hover:scale-90">
+            <h3 className="h-20 text-md font-semibold tracking-wide my-3 text-center hover:scale-90 overflow-hidden">
               {item.title}
             </h3>
-
-    
-                <BeforeCart  />
-                <AfterCart />
-            
-            <div className="flex justify-between">
-              <h5 className="text-sm text-blue-700 font-medium">
+            <CartButtons product={item} />
+            <div className="mt-2 flex justify-between ">
+              <h5 className="text-sm text-blue-700 font-medium hover:scale-110 hover:font-semibold ">
                 {item.price}$
               </h5>
-              <h6 className="text-sm text-red-600 font-medium">
+              <h6 className="text-sm text-red-600 font-medium hover:scale-110 hover:font-semibold ">
                 {item.rating.rate}
               </h6>
             </div>
