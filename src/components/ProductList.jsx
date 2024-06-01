@@ -4,6 +4,7 @@ import CartButtons from "./CartButton";
 
 function ProductList() {
   const [products, setProducts] = useState([]);
+  
 
   useEffect(() => {
     axios
@@ -16,11 +17,8 @@ function ProductList() {
       });
   }, []);
 
-  const handleMouseEnter = (id) => setHoveredItemId(id);
-  const handleMouseLeave = () => setHoveredItemId(null);
-
   return (
-    <section className="max-w-[1400px] mx-auto my-5 px-[10px]">
+    <section className=" max-w-[1400px] mx-auto my-5 px-[10px]">
       <div className="mx-5 grid md:grid-cols-3 lg:grid-cols-4 gap-3">
         {products.map((item, key) => (
           <div

@@ -37,10 +37,15 @@ const cartSlice = createSlice({
     },
     decrementCount: (state,action) => {
       const productId = action.payload;
-      state.cartLists.forEach((item) => {
+      state.cartLists = state.cartLists.filter((item) => {
         if (item?.id === productId) {
-          item.count--
+          if (item?.count === 1) {
+            return false
+          }else {
+            item.count--
+          }
         }
+        return true;
       })
     },
   },
