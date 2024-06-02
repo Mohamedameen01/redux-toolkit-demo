@@ -1,8 +1,18 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
+
+const PRODUCTS_URL = 'https://fakestoreapi.com/products'
+
+export const fetchProducts = createAsyncThunk('cart/fetchProducts', async() => {
+  const response = await axios.get(PRODUCTS_URL);
+  return response.data;
+})
 
 const INITIAL_STATE = {
   cartLists:[],
-  cartCount: 0,
+  products:[],
+  status:false,
+  error:''
 };
 
 const cartSlice = createSlice({
@@ -49,6 +59,22 @@ const cartSlice = createSlice({
       })
     },
   },
+  extraReducers: (builder) => {
+    builder
+    .addCase(fetchProducts.pending, (state) => {
+      state.status = true
+    })
+    
+    .addCase(fetchProducts.fulfilled, (state,action) => {
+      state.status = false
+      state.products = action.payload
+    })
+
+    .addCase(fetchProducts.rejected, (state,action) => {
+      state.status = false
+      state.error = action.error.message
+    })
+  }
 });
 
 export const { addToCart, incrementCount, decrementCount } = cartSlice.actions;

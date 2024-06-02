@@ -1,22 +1,11 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 import CartButtons from "./CartButton";
+import { useSelector } from "react-redux";
 
 function ProductList() {
-  const [products, setProducts] = useState([]);
   
-
-  useEffect(() => {
-    axios
-      .get("https://fakestoreapi.com/products")
-      .then((res) => {
-        setProducts(res.data);  
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
+  const { products } = useSelector((state) => state.cart);
+  
   return (
     <section className=" max-w-[1400px] mx-auto my-5 px-[10px]">
       <div className="mx-5 grid md:grid-cols-3 lg:grid-cols-4 gap-3">

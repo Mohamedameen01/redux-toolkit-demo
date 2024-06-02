@@ -20,5 +20,20 @@
 + wrap 'Provider' component on 'App' component.
 + and pass 'store' thru 'Provider' component.
 ```
+### **5-** CreateAsyncThunk
+```
++ for asynchoronous actions.
++ it accepts three parameters.
+    1- a redux action type string like 'name/function'.
+    2- a callback function that returns a promise.
+    3- options object.
+```
 
+### **6-** Promise Lifecycle Actions.
+```
++ we use for this builder callback
+eg: 
+    extraReducers: (builder) => {
+        builder.addCase(fetchProducts.(pending, fullfilled or rejected), (state,action) => {})
+    }
 
